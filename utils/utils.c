@@ -13,7 +13,7 @@ int	stack_size(t_stack *st)
 	return (size);
 }
 
-int	is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)			// smallest on top, largest on bottom
 {
 	while (a && a->next)
 	{
@@ -66,4 +66,31 @@ void	free_stack(t_stack **st)
 		*st = tmp;
 	}
 	*st = NULL;
+}
+
+
+char	*ft_strstr(const char *big, const char *little)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (little[0] == '\0')
+	{
+		return ((char *)(big));
+	}
+	while (big[i] != '\0')
+	{
+		j = 0;
+		while (big[i + j] == little[j])
+		{
+			j++;
+			if (little[j] == '\0')
+			{
+				return ((char *)(big + i));
+			}
+		}
+		i++;
+	}
+	return (NULL);
 }

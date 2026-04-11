@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/05 21:06:40 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/11 23:58:27 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,25 @@ typedef struct s_stack {
     struct s_stack* prev;
     struct s_stack* next;
     int n;
+    int rank;
 } t_stack;
+
+typedef struct s_op_count{
+    int sa;
+    int sb;
+    int pa;
+    int ra;
+    int rra;
+    int pb;
+    int rb;
+    int rrb;
+    int ss;
+    int rr;
+    int rrr;
+    int total;
+    int chunk_min;
+    int chunk_max;
+} t_op_count;
 // lists head is stacks top
 
 void    swap_num(int *a, int *b);
@@ -29,19 +47,19 @@ void    push(t_stack **src, t_stack **dst);
 void    rotate(t_stack **stack);
 void    reverse_rotate(t_stack **stack);
 
-void    sa(t_stack *a);
-void    pa(t_stack **a, t_stack **b);
-void    ra(t_stack **a);
-void    rra(t_stack **a);
+void    sa(t_stack *a, t_op_count *counts);
+void    pa(t_stack **a, t_stack **b, t_op_count *counts);
+void    ra(t_stack **a, t_op_count *counts);
+void    rra(t_stack **a, t_op_count *counts);
 
-void    sb(t_stack *b);
-void    pb(t_stack **a, t_stack **b);
-void    rb(t_stack **b);
-void    rrb(t_stack **b);
+void    sb(t_stack *b, t_op_count *counts);
+void    pb(t_stack **a, t_stack **b, t_op_count *counts);
+void    rb(t_stack **b, t_op_count *counts);
+void    rrb(t_stack **b, t_op_count *counts);
 
-void    ss(t_stack *a, t_stack *b);
-void    rr(t_stack **a, t_stack **b);
-void    rrr(t_stack **a, t_stack **b);
+void    ss(t_stack *a, t_stack *b, t_op_count *counts);
+void    rr(t_stack **a, t_stack **b, t_op_count *counts);
+void    rrr(t_stack **a, t_stack **b, t_op_count *counts);
 
 // utils.c
 int     stack_size(t_stack *st);
@@ -49,13 +67,46 @@ int     is_sorted(t_stack *a);
 t_stack *stack_min(t_stack *st);
 int     get_position(t_stack *st, t_stack *node);
 void    free_stack(t_stack **st);
+char	*ft_strstr(const char *big, const char *little);
 
 // sort_simple.c
-void    sort_simple(t_stack **a, t_stack **b);
-void    rotate_to_top(t_stack **a, int val, int size);
+void    insertion_sort(t_stack **a, t_stack **b, t_op_count *counts);
+void    rotate_to_top(t_stack **a, int val, int size, t_op_count *counts);
 int     best_rotation(int pos, int size);
 
 // sort_small.cs
-void    sort_two(t_stack **a);
-void    sort_three(t_stack **a);
-void    sort_five(t_stack **a, t_stack **b);
+void    sort_two(t_stack **a, t_op_count *counts);
+void    sort_three(t_stack **a, t_op_count *counts);
+void    sort_five(t_stack **a, t_stack **b, t_op_count *counts);
+
+// medium
+void    get_ranks(t_stack *a);
+void    push_chunk(t_stack **a, t_stack **b, t_op_count *counts);
+int     find_max_rank_pos(t_stack *b, int size_b);
+void    pull_back(t_stack **a, t_stack **b, t_op_count *counts);
+void    chunk_sort(t_stack **a, t_stack **b, t_op_count *counts);
+
+// split
+static void     free_all(char **res, int i);
+static char     *create_dup(char *str, int n);
+static int      count_words(const char *str, char charset);
+static char     **fill_result(char **result, char const *s, char c);
+char            **ft_split(char const *s, char c);
+
+// adaptive 
+float   compute_disorder(t_stack *a);
+void    adaptive(float disorder, t_stack **a, t_stack **b, t_op_count *counts);
+
+// radix
+void radix_sort(t_stack **a, t_stack **b, t_op_count *counts);
+
+
+// validation
+size_t	ft_strlen(const char *s);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_strcmp(char *s1, char *s2);
+int	is_numeric(char *str);
+int	is_valid_range(char *str);
+int	ft_atoi(const char *str);
+int	has_duplicate(char **argv, int current_index);
+char	*valod(int argc, char **argv, int *bench);
