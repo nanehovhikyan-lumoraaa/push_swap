@@ -10,16 +10,16 @@ int	best_rotation(int pos, int size)
 	return (pos - size);
 }
 
-void helper_rot(t_stack **b, int rot)
+void helper_rot(t_stack **b, int rot, t_op_count *counts)
 {
 	while (rot > 0)			// These loops actually rotate stack B until the “best position” is on top.
 	{
-		rb(b);
+		rb(b, counts);
 		rot--;
 	}
 	while (rot < 0)
 	{
-		rrb(b);
+		rrb(b, counts);
 		rot++;
 	}
 }
@@ -27,7 +27,7 @@ void helper_rot(t_stack **b, int rot)
 // This function's job: find the best position in Stack B to insert the current top 
 // of Stack A, then rotate Stack B to put that position on top.
 // This function doesn't move the val to the top of B
-void	rotate_to_top(t_stack **b, int val, int size)
+void	rotate_to_top(t_stack **b, int val, int size, t_op_count *counts)
 {
 	t_stack	*current;			
 	t_stack	*best;				
@@ -52,11 +52,11 @@ void	rotate_to_top(t_stack **b, int val, int size)
 	if (best == NULL)			// If no element in B is smaller than val, that means val is the smallest number seen so far. 
 		best_pos = get_position(*b, stack_min(*b));				// So instead of inserting above a smaller number, we just put it above the minimum in B.
 	rot = best_rotation(best_pos, size);
-	helper_rot(b, rot);
+	helper_rot(b, rot, counts);
 }
 
 // the main insertion sort
-void	insertion_sort(t_stack **a, t_stack **b)
+void	insertion_sort(t_stack **a, t_stack **b, t_op_count *counts)
 {
 	int	size;
 
@@ -64,20 +64,20 @@ void	insertion_sort(t_stack **a, t_stack **b)
 	if (size <= 1 || is_sorted(*a))
 		return ;
 	if (size == 2)
-		return (sort_two(a));
+		return (sort_two(a, counts));
 	if (size == 3)
-		return (sort_three(a));
+		return (sort_three(a, counts));
 	if (size <= 5)
-		return (sort_five(a, b));
-	pb(a, b);				// We seed Stack B with 2 elements to give rotate_to_top something to work with.r
-	pb(a, b);				// now B has 2 elements and A has size - 2 elements.
+		return (sort_five(a, b, counts));
+	pb(a, b, counts);				// We seed Stack B with 2 elements to give rotate_to_top something to work with.r
+	pb(a, b, counts);				// now B has 2 elements and A has size - 2 elements.
 	while (*a)
 	{
-		rotate_to_top(b, (*a)->n, stack_size(*b));			// rotate Stack B so that the correct insertion point rises to the top.
-		pb(a, b);					// Because we just rotated B to the right position, the number lands exactly where it maintains B's descending order.
+		rotate_to_top(b, (*a)->n, stack_size(*b), counts);			// rotate Stack B so that the correct insertion point rises to the top.
+		pb(a, b, counts);					// Because we just rotated B to the right position, the number lands exactly where it maintains B's descending order.
 	}
 	while (*b)		// At this point Stack A is completely empty and Stack B holds all the numbers in descending order (biggest on top, smallest on bottom).
-		pa(a, b);
+		pa(a, b, counts);
 }
 
 

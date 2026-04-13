@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:10:11 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 20:40:42 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 21:22:20 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int is_flag(char *str, int *bench)
 	if(str[0] != '-' || str[1] != '-')
 		return 0;
 	
-	if(!ft_strcmp(str, "--adaptive") || !ft_strcmp(str, "--simple") || !ft_strcmp(str, "--complex")
-		|| !ft_strcmp(str, "--medium") || !ft_strcmp(str, "--bench")){
-		if(!ft_strcmp(str, "--bench"))
+	if(!ft__strict(str, "--adaptive") || !ft_strcmp_strict(str, "--simple") || !ft_strcmp_strict(str, "--complex")
+		|| !ft_strcmp_strict(str, "--medium") || !ft_strcmp_strict(str, "--bench")){
+		if(!ft_strcmp_strict(str, "--bench"))
 			*bench = 1;
 		return 1;
 	}
@@ -117,7 +117,7 @@ int has_dup(char **mat)
 		while(mat[j])
 		{
 			if(is_valid_num_range(mat[i]) && is_valid_num_range(mat[j]) 
-				&& ft_atoi(mat[i]) != ft_atoi(mat[j]))
+				&& ft_atoi(mat[i]) == ft_atoi(mat[j]))
 				return 1;
 			j++;
 		}
@@ -164,7 +164,6 @@ int is_valid(char *str, char **flag, int *bench)
 {
 	char **mat;
 	int i;
-	int j;
 	
 	mat = ft_split(str, ' ');
 	if (!mat)

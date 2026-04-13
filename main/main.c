@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 20:41:32 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 22:36:12 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void zerofy_counts(t_op_count *count){
 int main(int argc, char **argv){
     char *flag;
     int bench;
-    t_op_count *counts;
+    t_op_count counts;
     t_stack *a;
     t_stack *b;
     char *str;
@@ -41,19 +41,30 @@ int main(int argc, char **argv){
     bench = 0;
     if(argc < 2)
         return 0;
+
     zerofy_counts(&counts);
     
-    flag = "--adaptive"; 
+    flag = ft_strdup("--adaptive");         // we have t heap allocate it first, so that in valildationn fucntion the free() works
     str = join_all_args(argc, argv);
-    if(!str)
+    if(!str)                // Check if join failed
+    {
+        free(flag);
         return 0;
-    if(!is_valid(str, flag, &bench))
+    }
+    if(!is_valid(str, &flag, &bench))
     {
         write(2, "Error\n", 6);
+        free(flag);
+        free(str);
         return 0;
     }
     
     a = parse(str);
     b = NULL;
+    // code will be added soon
+    free(flag);
+    free(str);          // str is malloced after parsing
+    free_stack(&a);
+    free_stack(&b);
     return (0);
 }

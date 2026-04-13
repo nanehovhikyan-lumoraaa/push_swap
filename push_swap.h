@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/13 20:41:39 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 21:18:40 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,15 @@ t_stack *stack_min(t_stack *st);
 int     get_position(t_stack *st, t_stack *node);
 void    free_stack(t_stack **st);
 char	*ft_strstr(const char *big, const char *little);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 // sort_simple.c
 void    insertion_sort(t_stack **a, t_stack **b, t_op_count *counts);
 void    rotate_to_top(t_stack **a, int val, int size, t_op_count *counts);
 int     best_rotation(int pos, int size);
+void helper_rot(t_stack **b, int rot, t_op_count *counts);
 
 // sort_small.cs
 void    sort_two(t_stack **a, t_op_count *counts);
@@ -104,11 +108,12 @@ void radix_sort(t_stack **a, t_stack **b, t_op_count *counts);
 size_t  ft_strlen(const char *s);
 char    *ft_strdup(const char *s);
 int     ft_strcmp_strict(char *s1, char *s2);
-
 char    *join_all_args(int argc, char **argv);
 void    free_mat(char **mat);
-
 int     is_valid_num_range(char *str);
 int     is_flag(char *str, int *bench);
 int     has_dup(char **mat);
 int     is_valid(char *str, char **flag, int *bench);
+
+// parsing.c
+int	ft_atoi(const char *str);

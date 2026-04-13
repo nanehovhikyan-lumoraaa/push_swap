@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 12:51:12 by marvin            #+#    #+#             */
-/*   Updated: 2026/04/11 12:58:17 by marvin           ###   ########.fr       */
+/*   Updated: 2026/04/13 21:11:24 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	radix_sort(t_stack **a, t_stack **b, t_op_count *counts)
 	size = stack_size(*a);
 	bits_size = get_bits_size(size); // how many bits are needed?
 	bit = 0;
+	get_ranks(*a); 				// by default the ranks are all -1, we have to get them before using them
 	while (bit < bits_size)
 	{
 		radix_sort_helper(a, b, bit, counts);

@@ -61,8 +61,8 @@ void	push_chunk(t_stack **a, t_stack **b, t_op_count *counts)
 	int	pos;
 	int	remaining;
     int size_a;
-    size_a = stack_size(*a);
 
+    size_a = stack_size(*a);
 	pushed = 0;
 	remaining = counts->chunk_max - counts->chunk_min + 1;
 	while (pushed < remaining && *a)

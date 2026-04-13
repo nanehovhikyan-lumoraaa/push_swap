@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:19 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 18:51:25 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 21:09:38 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_stack	*parse(char *str)
             if(!new_node)
             {
                 free_mat(mat);
-                free_stack(st);
+                free_stack(&st);
                 return NULL;
             }
             stack_add_back(&st, new_node);

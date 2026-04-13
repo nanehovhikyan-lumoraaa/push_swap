@@ -24,12 +24,12 @@ void	sort_three(t_stack **a, t_op_count *counts)         // at most 2 operations
 	bot = (*a)->next->next->n;
 	if (top < mid && mid < bot)			// case 1 -> Already sorted
 		return ;						// Example: [1, 2, 3] → do nothing
-	else if (top < mid && top < bot)	// case 5: [1, 3, 2] 
+	else if (top < mid && top < bot && mid > bot)	// case 5: [1, 3, 2] 
 	{		
 		sa(*a, counts);							// swap → [3, 1, 2] 
 		ra(a, counts);							// rotate → [1, 2, 3]
 	}
-	if (top > mid && mid < bot && top < bot)	// Case 2: [2,1,3]
+	else if (top > mid && mid < bot && top < bot)	// Case 2: [2,1,3]
 	{
 		sa(*a, counts);
 	}
@@ -38,11 +38,11 @@ void	sort_three(t_stack **a, t_op_count *counts)         // at most 2 operations
 		sa(*a, counts);									// [2, 3, 1]
 		rra(a, counts);									// [1, 2, 3]
 	}
-	if (top > mid && top > bot && mid < bot)	// case 4: [3, 1, 2]
+	else if (top > mid && top > bot && mid < bot)	// case 4: [3, 1, 2]
 	{
 		ra(a, counts);
 	}
-	if (top < mid && top > bot && mid > bot)	// Case 6: [2,3,1]
+	else if (top < mid && top > bot && mid > bot)	// Case 6: [2,3,1]
 	{
 		rra(a, counts);
 	}
