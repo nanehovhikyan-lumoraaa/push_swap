@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/11 23:58:27 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:40:45 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,15 @@ void    adaptive(float disorder, t_stack **a, t_stack **b, t_op_count *counts);
 // radix
 void radix_sort(t_stack **a, t_stack **b, t_op_count *counts);
 
+// valid
+size_t  ft_strlen(const char *s);
+char    *ft_strdup(const char *s);
+int     ft_strcmp_strict(char *s1, char *s2);
 
-// validation
-size_t	ft_strlen(const char *s);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int	ft_strcmp(char *s1, char *s2);
-int	is_numeric(char *str);
-int	is_valid_range(char *str);
-int	ft_atoi(const char *str);
-int	has_duplicate(char **argv, int current_index);
-char	*valod(int argc, char **argv, int *bench);
+char    *join_all_args(int argc, char **argv);
+void    free_mat(char **mat);
+
+int     is_valid_num_range(char *str);
+int     is_flag(char *str, int *bench);
+int     has_dup(char **mat);
+int     is_valid(char *str, char **flag, int *bench);

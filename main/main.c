@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/11 23:57:00 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:42:44 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,24 @@ int main(int argc, char **argv){
     t_op_count *counts;
     t_stack *a;
     t_stack *b;
+    char *str;
     
+    bench = 0;
     if(argc < 2)
         return 0;
-    
     zerofy_counts(&counts);
     
-    flag = valod(argc, argv, &bench);
-    
-    if(!flag)
-        return 0;       // valod already write the error massage
-    a = parse(argc, argv); // in parse there's a create st function which is used for b
-    b = create_stack(0);
-    if (!a || !b)
+    flag = "--adaptive";      // valod already write the error massage
+    str = join_all_args(argc, argv);
+    if(!str)
+        return 0;
+    if(!is_valid(str, flag, &bench))
     {
-        free_stack(&a);
-        free_stack(&b);
-        return (0);
+        write(2, "Error\n", 6);
+        return 0;
     }
-    if (ft_strcmp(flag, "simple") == 0)
-        insertion_sort(&a, &b, &counts);
-    else if (ft_strcmp(flag, "medium") == 0)
-        chunk_sort(&a, &b, &counts);
-    else if (ft_strcmp(flag, "complex") == 0)
-        radix_sort(&a, &b, &counts);
-    else // "adaptive" is the default
-        adaptive(compute_disorder(a), &a, &b, &counts);
-
-    if (bench)
-        print_bench(&counts, flag, compute_disorder(a));
-    free_stack(&a);
-    free_stack(&b);
+    
+    a = parse(str);
+    b = NULL;
     return (0);
 }
