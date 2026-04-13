@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:10:11 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 18:36:40 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 20:40:42 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ char *join_all_args(int argc, char **argv)
     }
     return (result);
 }
-
-// is num
-// is flag
-// --bench
 
 int	is_valid_num_range(char *str)
 {
@@ -111,15 +107,17 @@ int is_flag(char *str, int *bench)
 
 int has_dup(char **mat)
 {
-	int i = 0;
+	int i;
 	int j;
 	
+	i = 0;
 	while(mat[i])
 	{
 		j = i + 1;
 		while(mat[j])
 		{
-			if(is_valid_num_range(mat[i]) && is_valid_num_range(mat[j]) && !ft_strcmp_strict(mat[i], mat[j]))
+			if(is_valid_num_range(mat[i]) && is_valid_num_range(mat[j]) 
+				&& ft_atoi(mat[i]) != ft_atoi(mat[j]))
 				return 1;
 			j++;
 		}

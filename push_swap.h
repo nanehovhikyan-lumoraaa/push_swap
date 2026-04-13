@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/13 18:40:45 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 20:41:39 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void    adaptive(float disorder, t_stack **a, t_stack **b, t_op_count *counts);
 // radix
 void radix_sort(t_stack **a, t_stack **b, t_op_count *counts);
 
-// valid
+// validation
 size_t  ft_strlen(const char *s);
 char    *ft_strdup(const char *s);
 int     ft_strcmp_strict(char *s1, char *s2);

@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 18:42:44 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/13 20:41:32 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv){
         return 0;
     zerofy_counts(&counts);
     
-    flag = "--adaptive";      // valod already write the error massage
+    flag = "--adaptive"; 
     str = join_all_args(argc, argv);
     if(!str)
         return 0;
