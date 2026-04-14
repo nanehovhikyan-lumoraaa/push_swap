@@ -6,12 +6,12 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/14 14:43:14 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 20:39:06 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef PUSH_SWAP_H
-#define PUSHSWAP_H
+#define PUSH_SWAP_H
 
 #include <stddef.h>
 #include <stdio.h>

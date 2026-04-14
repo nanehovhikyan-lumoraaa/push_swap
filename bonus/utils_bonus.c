@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 15:13:46 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 15:45:43 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 20:18:00 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ char *join_all_args(int argc, char **argv)
         tmp = ft_strjoin(spaced, argv[i]);
         free(spaced);
         result = tmp;
-        if (!result) return (NULL);
+        if (!result) 
+			return (NULL);
         i++;
     }
     return (result);
