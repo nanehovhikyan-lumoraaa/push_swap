@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 22:36:12 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 10:54:06 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int main(int argc, char **argv){
     t_stack *a;
     t_stack *b;
     char *str;
+    float disorder;
     
     bench = 0;
     if(argc < 2)
@@ -61,9 +62,27 @@ int main(int argc, char **argv){
     
     a = parse(str);
     b = NULL;
-    // code will be added soon
+    free(str);          // parse allocates memory for str
+    if(!a || is_sorted(a))
+    {
+        free(flag);
+        free_stack(&a);
+        return 0;
+    }
+    disorder = compute_disorder(a);
+
+    if(!ft_strcmp_strict(flag, "--simple"))
+        insertion_sort(&a, &b, &counts);
+    else if(!ft_strcmp_strict(flag, "--medium"))
+        chunk_sort(&a, &b, &counts);
+    else if(!ft_strcmp_strict(flag, "--complex"))
+        radix_sort(&a, &b, &counts);
+    else
+        adaptive(disorder, &a, &b, &counts);
+
+    if(bench)
+        print_bench(&counts, disorder, flag);
     free(flag);
-    free(str);          // str is malloced after parsing
     free_stack(&a);
     free_stack(&b);
     return (0);

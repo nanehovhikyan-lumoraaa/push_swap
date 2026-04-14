@@ -1,3 +1,103 @@
 #include "push_swap.h"
 
-// body will be added soon
+char	*get_flag(char *flag)
+{
+	if (!ft_strcmp_strict(flag, "--simple"))
+		return ("Simple / O(n^2)");
+	if (!ft_strcmp_strict(flag, "--medium"))
+		return ("Medium / O(n*sqrt(n))");
+	if (!ft_strcmp_strict(flag, "--complex"))
+		return ("Complex / O(n log n)");
+	return ("Adaptive / O(n*sqrt(n))");
+}
+
+void    ft_putchar_fd(char c, int fd)
+{
+    if (fd < 0)
+    {
+        return ;
+    }
+    write(fd, &c, 1);
+}
+
+void    ft_putnbr_fd(int n, int fd)
+{
+    char    c;
+
+    if (fd < 0)
+    {
+        return ;
+    }
+    if (n == -2147483648)
+    {
+        write(fd, "-2147483648", 11);
+        return ;
+    }
+    if (n < 0)
+    {
+        write(fd, "-", 1);
+        n = -n;
+    }
+    if (n >= 10)
+    {
+        ft_putnbr_fd(n / 10, fd);
+    }
+    c = (n % 10) + '0';
+    write(fd, &c, 1);
+}
+
+void    ft_putstr_fd(char *s, int fd)
+{
+    if (s == NULL || fd < 0)
+    {
+        return ;
+    }
+    write(fd, s, ft_strlen(s));
+}
+
+void	write_float(float f, int fd)
+{
+
+
+}
+
+void	print_bench(t_op_count *counts, float disorder, char *flag)
+{
+	ft_putstr_fd("[bench] disorder: ", 2);
+	write_float(disorder * 100, 2);
+	ft_putstr_fd("%\n", 2);
+
+	ft_putstr_fd("[bench] strategy: ", 2);
+	ft_putstr_fd(get_flag(flag), 2);
+	ft_putchar_fd('\n', 2);
+
+	ft_putstr_fd("[bench] total_ops: ", 2);
+	ft_putnbr_fd(counts->total, 2);
+	ft_putchar_fd('\n', 2);
+
+	ft_putstr_fd("[bench] sa: ", 2);
+	ft_putnbr_fd(counts->sa, 2);
+	ft_putstr_fd(" sb: ", 2);
+	ft_putnbr_fd(counts->sb, 2);
+	ft_putstr_fd(" ss: ", 2);
+	ft_putnbr_fd(counts->ss, 2);
+	ft_putstr_fd(" pa: ", 2);
+	ft_putnbr_fd(counts->pa, 2);
+	ft_putstr_fd(" pb: ", 2);
+	ft_putnbr_fd(counts->pb, 2);
+	ft_putchar_fd('\n', 2);
+
+	ft_putstr_fd("[bench] ra: ", 2);
+	ft_putnbr_fd(counts->ra, 2);
+	ft_putstr_fd(" rb: ", 2);
+	ft_putnbr_fd(counts->rb, 2);
+	ft_putstr_fd(" rr: ", 2);
+	ft_putnbr_fd(counts->rr, 2);
+	ft_putstr_fd(" rra: ", 2);
+	ft_putnbr_fd(counts->rra, 2);
+	ft_putstr_fd(" rrb: ", 2);
+	ft_putnbr_fd(counts->rrb, 2);
+	ft_putstr_fd(" rrr: ", 2);
+	ft_putnbr_fd(counts->rrr, 2);
+	ft_putchar_fd('\n', 2);
+}

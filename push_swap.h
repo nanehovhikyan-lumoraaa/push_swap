@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/13 21:18:40 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 10:57:06 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,3 +117,16 @@ int     is_valid(char *str, char **flag, int *bench);
 
 // parsing.c
 int	ft_atoi(const char *str);
+int	is_digit(char c);
+int	is_number(char *str);
+t_stack *create_node(int n);
+void stack_add_back(t_stack **stack, t_stack *new);
+t_stack	*parse(char *str);
+
+// bench.c
+char	*get_flag(char *flag);
+void    ft_putchar_fd(char c, int fd);
+void    ft_putnbr_fd(int n, int fd);
+void    ft_putstr_fd(char *s, int fd);
+void	write_float(float f, int fd);
+void	print_bench(t_op_count *counts, float disorder, char *flag);
