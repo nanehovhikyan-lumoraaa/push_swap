@@ -6,20 +6,20 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:02:09 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/10 18:02:18 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 13:57:35 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_all(char **res, int i)
+ void	free_all(char **res, int i)
 {
 	while (i >= 0)
 		free(res[i--]);
 	free(res);
 }
 
-static char	*create_dup(char *str, int n)
+ char	*create_dup(char *str, int n)
 {
 	char	*dup;
 	int		i;
@@ -37,7 +37,7 @@ static char	*create_dup(char *str, int n)
 	return (dup);
 }
 
-static int	count_words(const char *str, char charset)
+ int	count_words(const char *str, char charset)
 {
 	int	count;
 	int	i;
@@ -62,7 +62,7 @@ static int	count_words(const char *str, char charset)
 	return (count);
 }
 
-static char	**fill_result(char **result, char const *s, char c)
+ char	**fill_result(char **result, char const *s, char c)
 {
 	char	*start;
 	int		i;

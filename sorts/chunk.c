@@ -97,7 +97,7 @@ void	push_chunk(t_stack **a, t_stack **b, t_op_count *counts)
 ** STEP 3 helper — find the position of the node with the highest rank
 ** currently in B.  We'll rotate B to bring it to the top, then pa.
 */
-int	find_max_rank_pos(t_stack *b, int size_b)
+int	find_max_rank_pos(t_stack *b)
 {
 	t_stack	*cur;
 	int		max_rank;
@@ -139,7 +139,7 @@ void	pull_back(t_stack **a, t_stack **b, t_op_count *counts)
 	while (*b)
 	{
 		size_b = stack_size(*b);
-		pos = find_max_rank_pos(*b, size_b);
+		pos = find_max_rank_pos(*b);
 		if (pos <= size_b / 2)
 			while (pos-- > 0)
 				rb(b, counts);

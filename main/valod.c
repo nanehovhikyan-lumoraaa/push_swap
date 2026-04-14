@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:10:11 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 21:22:20 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 14:00:23 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,26 @@ char *join_all_args(int argc, char **argv)
     return (result);
 }
 
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
+
+	str1 = (unsigned char *)(s1);
+	str2 = (unsigned char *)(s2);
+	i = 0;
+	if (n == 0)
+	{
+		return (0);
+	}
+	while (str1[i] && i < (n - 1) && str1[i] == str2[i])
+	{
+		i++;
+	}
+	return (str1[i] - str2[i]);
+}
+
 int	is_valid_num_range(char *str)
 {
 	char	*limit;
@@ -96,7 +116,7 @@ int is_flag(char *str, int *bench)
 	if(str[0] != '-' || str[1] != '-')
 		return 0;
 	
-	if(!ft__strict(str, "--adaptive") || !ft_strcmp_strict(str, "--simple") || !ft_strcmp_strict(str, "--complex")
+	if(!ft_strcmp_strict(str, "--adaptive") || !ft_strcmp_strict(str, "--simple") || !ft_strcmp_strict(str, "--complex")
 		|| !ft_strcmp_strict(str, "--medium") || !ft_strcmp_strict(str, "--bench")){
 		if(!ft_strcmp_strict(str, "--bench"))
 			*bench = 1;

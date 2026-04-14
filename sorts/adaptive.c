@@ -6,13 +6,13 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 17:05:03 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/13 21:08:19 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 13:04:24 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-float compute_disorder(t_stack *a)
+double compute_disorder(t_stack *a)
 {
     int mistakes;
     int total_pairs;
@@ -32,10 +32,10 @@ float compute_disorder(t_stack *a)
         }
         cur = cur->next;
     }
-    return ((float)mistakes/total_pairs); 
+    return ((double)mistakes/total_pairs); 
 }
 
-void adaptive(float disorder, t_stack **a, t_stack **b, t_op_count *counts){
+void adaptive(double disorder, t_stack **a, t_stack **b, t_op_count *counts){
     if(disorder < 0 || disorder > 1)
     {
         write(2, "Error\n", 6);

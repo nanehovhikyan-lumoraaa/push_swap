@@ -6,13 +6,13 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 12:51:12 by marvin            #+#    #+#             */
-/*   Updated: 2026/04/13 21:11:24 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 13:57:35 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_bits_size(int size)
+ int	get_bits_size(int size)
 {
 	int	bits;
 
@@ -22,7 +22,7 @@ static int	get_bits_size(int size)
 	return (bits);
 }
 
-static void	radix_sort_helper(t_stack **a, t_stack **b, int bit, t_op_count *counts)
+ void	radix_sort_helper(t_stack **a, t_stack **b, int bit, t_op_count *counts)
 {
 	int	size;
     size = stack_size(*a);

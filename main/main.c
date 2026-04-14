@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 10:54:06 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 13:04:24 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv){
     t_stack *a;
     t_stack *b;
     char *str;
-    float disorder;
+    double disorder;
     
     bench = 0;
     if(argc < 2)

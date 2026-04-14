@@ -6,9 +6,12 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/14 10:57:06 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 14:43:14 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+# ifndef PUSH_SWAP_H
+#define PUSHSWAP_H
 
 #include <stddef.h>
 #include <stdio.h>
@@ -86,20 +89,20 @@ void    sort_five(t_stack **a, t_stack **b, t_op_count *counts);
 // medium
 void    get_ranks(t_stack *a);
 void    push_chunk(t_stack **a, t_stack **b, t_op_count *counts);
-int     find_max_rank_pos(t_stack *b, int size_b);
+int     find_max_rank_pos(t_stack *b);
 void    pull_back(t_stack **a, t_stack **b, t_op_count *counts);
 void    chunk_sort(t_stack **a, t_stack **b, t_op_count *counts);
 
 // split
-static void     free_all(char **res, int i);
-static char     *create_dup(char *str, int n);
-static int      count_words(const char *str, char charset);
-static char     **fill_result(char **result, char const *s, char c);
+ void     free_all(char **res, int i);
+ char     *create_dup(char *str, int n);
+ int      count_words(const char *str, char charset);
+ char     **fill_result(char **result, char const *s, char c);
 char            **ft_split(char const *s, char c);
 
 // adaptive 
-float   compute_disorder(t_stack *a);
-void    adaptive(float disorder, t_stack **a, t_stack **b, t_op_count *counts);
+double   compute_disorder(t_stack *a);
+void    adaptive(double disorder, t_stack **a, t_stack **b, t_op_count *counts);
 
 // radix
 void radix_sort(t_stack **a, t_stack **b, t_op_count *counts);
@@ -114,6 +117,7 @@ int     is_valid_num_range(char *str);
 int     is_flag(char *str, int *bench);
 int     has_dup(char **mat);
 int     is_valid(char *str, char **flag, int *bench);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 // parsing.c
 int	ft_atoi(const char *str);
@@ -124,9 +128,11 @@ void stack_add_back(t_stack **stack, t_stack *new);
 t_stack	*parse(char *str);
 
 // bench.c
-char	*get_flag(char *flag);
+char	*get_flag(char *flag, double disorder);
 void    ft_putchar_fd(char c, int fd);
 void    ft_putnbr_fd(int n, int fd);
 void    ft_putstr_fd(char *s, int fd);
-void	write_float(float f, int fd);
-void	print_bench(t_op_count *counts, float disorder, char *flag);
+void	write_double(double f, int fd);
+void	print_bench(t_op_count *counts, double disorder, char *flag);
+
+#endif

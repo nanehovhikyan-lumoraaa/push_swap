@@ -85,7 +85,7 @@ void	sort_five(t_stack **a, t_stack **b, t_op_count *counts)
 
 
 // // helper: apply up to 2 ops
-// static void do_ops(t_stack **a,
+//  void do_ops(t_stack **a,
 //                    void (*op1)(t_stack **),
 //                    void (*op2)(t_stack **),
 //                    void (*swap)(t_stack *))

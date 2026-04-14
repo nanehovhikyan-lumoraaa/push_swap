@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-char	*get_flag(char *flag)
+char	*get_flag(char *flag, double disorder)
 {
 	if (!ft_strcmp_strict(flag, "--simple"))
 		return ("Simple / O(n^2)");
@@ -8,7 +8,12 @@ char	*get_flag(char *flag)
 		return ("Medium / O(n*sqrt(n))");
 	if (!ft_strcmp_strict(flag, "--complex"))
 		return ("Complex / O(n log n)");
-	return ("Adaptive / O(n*sqrt(n))");
+	if(disorder < 0.2)
+        return ("Adaptive / O(n^2)");
+    else if(disorder >= 0.2 && disorder < 0.5)
+        return ("Adaptive / O(n*sqrt(n))");
+    else
+        return ("Adaptive / O(n log n)");
 }
 
 void    ft_putchar_fd(char c, int fd)
@@ -55,20 +60,31 @@ void    ft_putstr_fd(char *s, int fd)
     write(fd, s, ft_strlen(s));
 }
 
-void	write_float(float f, int fd)
+void	write_double_dis(double disorder, int fd)
 {
-
-
+	if((int)disorder == 1)
+	{
+		write(fd, "100.00%\n", 8);
+		return ;
+	}
+	double percent = disorder * 100;
+	ft_putnbr_fd((int)(percent), fd);
+	write(fd, ".", 1);
+	// 0.4005 
+	// percent = 4005
+	ft_putnbr_fd((int)(percent * 10) % 10, fd);  // Prints '0'
+    ft_putnbr_fd((int)(percent * 100) % 10, fd); // Prints '5'
+    write(fd, "%\n", 1);
 }
 
-void	print_bench(t_op_count *counts, float disorder, char *flag)
+void	print_bench(t_op_count *counts, double disorder, char *flag)
 {
 	ft_putstr_fd("[bench] disorder: ", 2);
-	write_float(disorder * 100, 2);
-	ft_putstr_fd("%\n", 2);
+	write_double_dis(disorder, 2);
+	write(2, "\n", 1);
 
 	ft_putstr_fd("[bench] strategy: ", 2);
-	ft_putstr_fd(get_flag(flag), 2);
+	ft_putstr_fd(get_flag(flag, disorder), 2);
 	ft_putchar_fd('\n', 2);
 
 	ft_putstr_fd("[bench] total_ops: ", 2);
