@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 14:40:56 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 15:39:33 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 21:47:46 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
     if(!is_valid(str))
     {
         write(2, "Error\n", 6);
-        free(str);
+        //free(str);
         return 0;
     }
     

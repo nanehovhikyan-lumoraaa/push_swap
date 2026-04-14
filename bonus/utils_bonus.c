@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 15:13:46 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 20:18:00 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 21:56:38 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ char *join_all_args(int argc, char **argv)
     while (i < argc)
     {
         spaced = ft_strjoin(result, " "); // Add space before next arg
-        free(result);
+        //free(result);
         tmp = ft_strjoin(spaced, argv[i]);
-        free(spaced);
+        //free(spaced);
         result = tmp;
         if (!result) 
 			return (NULL);
@@ -157,3 +157,28 @@ t_stack	*parse(char *str)
     free_mat(mat);
     return st;
 }
+
+
+
+
+
+// char	*ft_strjoin(char const *s1, char const *s2)
+// {
+// 	size_t	total;
+// 	char	*final;
+
+// 	if (!s1 || !s2)
+// 	{
+// 		return (NULL);
+// 	}
+// 	total = ft_strlen(s1) + ft_strlen(s2) + 2;
+// 	final = (char *)malloc(sizeof(char) * total);
+// 	if (!final)
+// 	{
+// 		return (NULL);
+// 	}
+// 	ft_strlcpy(final, s1, total);
+// 	ft_strlcat(final, " ", total);
+// 	ft_strlcat(final, s2, total);
+// 	return (final);
+// }

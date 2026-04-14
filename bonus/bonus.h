@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 14:43:24 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 20:36:47 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/14 21:47:22 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack {
 } t_stack;
 
 // get_next_line functions
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 char	*ft_strchr(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *s, unsigned int start, size_t len);
@@ -82,6 +82,5 @@ int	ft_atoi(const char *str);
 t_stack *create_node(int n);
 void stack_add_back(t_stack **stack, t_stack *new);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
 
 #endif
