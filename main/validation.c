@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:10:11 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 15:20:59 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:25:04 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	check_limit(char *num, char sign)
 
 int	is_valid_num_range(char *str)
 {
-	char	*limit;
 	char	*num;
 	int		i;
 

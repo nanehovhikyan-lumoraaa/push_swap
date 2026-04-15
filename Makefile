@@ -9,7 +9,7 @@ CFLAGS        := -Wall -Wextra -Werror -I .
 # Mandatory source files
 SRCS          := main/main.c \
                  main/parsing.c \
-                 main/parse_helpers \
+                 main/parse_helpers.c \
                  main/validation.c \
                  main/val_helpers_1.c \
                  main/val_helpers_2.c \
