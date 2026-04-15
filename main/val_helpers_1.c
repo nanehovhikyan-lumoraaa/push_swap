@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:49:21 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:52:51 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:58:14 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 char	*ft_strdup(const char *s)
 {
-	char *dest;
-	size_t i;
-	size_t len;
+	char	*dest;
+	size_t	i;
+	size_t	len;
 
 	if (s == NULL)
 		return (NULL);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk.c                                            :+:      :+:    :+:   */
+/*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:41:28 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:43:39 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:13:07 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,69 +34,46 @@ void	get_ranks(t_stack *a)
 	}
 }
 
+static int	get_next_pos(t_stack *a, int min, int max)
+{
+	int	pos;
+
+	pos = 0;
+	while (a)
+	{
+		if (a->rank >= min && a->rank <= max)
+			return (pos);
+		pos++;
+		a = a->next;
+	}
+	return (-1);
+}
+
 void	push_chunk(t_stack **a, t_stack **b, t_op_count *counts)
 {
-	int		pushed;
-	int		pos;
-	int		remaining;
-	int		size_a;
-	t_stack	*tmp;
-	int		back;
+	int	pos;
+	int	size;
+	int	pushed;
+	int	rem;
 
-	size_a = stack_size(*a);
+	size = stack_size(*a);
 	pushed = 0;
-	remaining = counts->chunk_max - counts->chunk_min + 1;
-	while (pushed < remaining && *a)
+	rem = counts->chunk_max - counts->chunk_min + 1;
+	while (pushed < rem && *a)
 	{
-		pos = 0;
-		{
-			tmp = *a;
-			while (tmp && !(tmp->rank >= counts->chunk_min
-					&& tmp->rank <= counts->chunk_max))
-			{
-				pos++;
-				tmp = tmp->next;
-			}
-			if (!tmp)
-				break ;
-		}
-		if (pos <= size_a / 2)
+		pos = get_next_pos(*a, counts->chunk_min, counts->chunk_max);
+		if (pos == -1)
+			break ;
+		if (pos <= size / 2)
 			while (pos-- > 0)
 				ra(a, counts);
 		else
-		{
-			back = size_a - pos;
-			while (back-- > 0)
+			while (size - pos++ > 0)
 				rra(a, counts);
-		}
 		pb(a, b, counts);
-		size_a--;
+		size--;
 		pushed++;
 	}
-}
-
-int	find_max_rank_pos(t_stack *b)
-{
-	t_stack	*cur;
-	int		max_rank;
-	int		max_pos;
-	int		pos;
-
-	cur = b;
-	max_rank = -1;
-	max_pos = 0;
-	pos = 0;
-	while (cur)
-	{
-		if (cur->rank > max_rank)
-		{
-			max_rank = cur->rank;
-			max_pos = pos;
-		}
-		pos++;
-		cur = cur->next;
-	}
-	return (max_pos);
 }
 
 void	pull_back(t_stack **a, t_stack **b, t_op_count *counts)
@@ -124,9 +101,9 @@ void	pull_back(t_stack **a, t_stack **b, t_op_count *counts)
 
 void	chunk_sort(t_stack **a, t_stack **b, t_op_count *counts)
 {
-	int n;
-	int chunk_size;
-	int i;
+	int	n;
+	int	chunk_size;
+	int	i;
 
 	n = stack_size(*a);
 	if (n <= 5)

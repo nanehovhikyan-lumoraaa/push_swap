@@ -9,16 +9,25 @@ CFLAGS        := -Wall -Wextra -Werror -I .
 # Mandatory source files
 SRCS          := main/main.c \
                  main/parsing.c \
-                 main/valod.c \
-                 stack_impl/impl.c \
-                 utils/utils.c \
-                 utils/ft_split.c \
+                 main/parse_helpers \
+                 main/validation.c \
+                 main/val_helpers_1.c \
+                 main/val_helpers_2.c \
+                 main/bench.c \
+                 main/bench_helper.c \
+                 stack_impl/impl_1.c \
+                 stack_impl/impl_2.c \
+                 stack_impl/impl_3.c \
+                 stack_impl/impl_helpers.c \
+                 utils/utils_str.c \
+                 utils/utils_stack.c \
+                 utils/split.c \
                  sorts/sort_small.c \
-                 sorts/insertion.c \
-                 sorts/chunk.c \
+                 sorts/insertion_sort.c \
+                 sorts/chunk_sort.c \
                  sorts/radix_sort.c \
-                 sorts/adaptive.c \
-                 main/bench.c
+                 sorts/chunk_helper.c \
+                 sorts/adaptive.c
 
 # Bonus source files
 BONUS_SRCS    := bonus/bonus.c \

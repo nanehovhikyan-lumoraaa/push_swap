@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 17:05:03 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:46:18 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:09:24 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	adaptive(double disorder, t_stack **a, t_stack **b, t_op_count *counts)
 		write(2, "Error\n", 6);
 		return ;
 	}
-
 	if (disorder < 0.2)
 		insertion_sort(a, b, counts);
 	else if (disorder >= 0.2 && disorder < 0.5)

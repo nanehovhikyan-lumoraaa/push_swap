@@ -6,13 +6,11 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:19:47 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/15 15:52:52 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:16:16 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// paylatakum: use this function to make pa pb... calls and change the struct as we need to
 
 void	sa(t_stack *a, t_op_count *counts)
 {

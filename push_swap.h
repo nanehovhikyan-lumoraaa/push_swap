@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/15 15:52:45 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:14:58 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,11 @@ void				sort_five(t_stack **a, t_stack **b, t_op_count *counts);
 
 // chunk_helper.c
 int					ft_sqrt(int nb);
+int					find_max_rank_pos(t_stack *b);
 
 // chunk_sort.c
 void				get_ranks(t_stack *a);
 void				push_chunk(t_stack **a, t_stack **b, t_op_count *counts);
-int					find_max_rank_pos(t_stack *b);
 void				pull_back(t_stack **a, t_stack **b, t_op_count *counts);
 void				chunk_sort(t_stack **a, t_stack **b, t_op_count *counts);
 

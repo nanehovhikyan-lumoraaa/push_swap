@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion.c                                        :+:      :+:    :+:   */
+/*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:35:24 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:39:25 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:09:11 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,9 @@ void	rotate_to_top(t_stack **b, int val, int size, t_op_count *counts)
 	helper_rot(b, rot, counts);
 }
 
-// the main insertion sort
 void	insertion_sort(t_stack **a, t_stack **b, t_op_count *counts)
 {
-	int size;
+	int	size;
 
 	size = stack_size(*a);
 	if (size <= 1 || is_sorted(*a))

@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 15:53:25 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:57:49 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ static void	execute_sort(t_stack **a, t_stack **b, t_op_count *c, char *f)
 
 int	main(int argc, char **argv)
 {
-	t_data d;
-	t_stack *a;
-	t_stack *b;
-	char *str;
+	t_data	d;
+	t_stack	*a;
+	t_stack	*b;
+	char	*str;
 
 	if (argc < 2)
 		return (0);
@@ -88,9 +88,5 @@ int	main(int argc, char **argv)
 	execute_sort(&a, &b, &d.counts, d.flag);
 	if (d.bench)
 		print_bench(&d.counts, compute_disorder(a), d.flag);
-
-	free(d.flag);
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+	return (free(d.flag), free_stack(&a), free_stack(&b), 0);
 }

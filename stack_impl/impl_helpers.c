@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:25:58 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:28:01 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:16:39 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	rotate(t_stack **stack)
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;

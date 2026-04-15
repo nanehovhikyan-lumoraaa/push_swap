@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:32:49 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:34:22 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:17:23 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	stack_size(t_stack *st)
 	return (size);
 }
 
-int	is_sorted(t_stack *a) // smallest on top, largest on bottom
+int	is_sorted(t_stack *a)
 {
 	while (a && a->next)
 	{
@@ -52,9 +52,9 @@ t_stack	*stack_min(t_stack *st)
 	return (min);
 }
 
-int	get_position(t_stack *st, t_stack *node) // գտնել ինդեքսը
+int	get_position(t_stack *st, t_stack *node)
 {
-	int pos;
+	int	pos;
 
 	pos = 0;
 	while (st)
@@ -69,7 +69,7 @@ int	get_position(t_stack *st, t_stack *node) // գտնել ինդեքսը
 
 void	free_stack(t_stack **st)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (*st)
 	{

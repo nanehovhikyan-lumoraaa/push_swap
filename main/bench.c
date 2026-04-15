@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nhovhiky <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/15 15:59:51 by nhovhiky          #+#    #+#             */
+/*   Updated: 2026/04/15 16:00:12 by nhovhiky         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 char	*get_flag(char *flag, double disorder)
 {
@@ -20,7 +30,7 @@ char	*get_flag(char *flag, double disorder)
 
 void	write_double_dis(double disorder, int fd)
 {
-	double percent;
+	double	percent;
 
 	if ((int)disorder == 1)
 	{

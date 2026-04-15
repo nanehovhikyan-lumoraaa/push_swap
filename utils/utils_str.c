@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:33:34 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:34:25 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:22:46 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
 	len = ft_strlen(src);

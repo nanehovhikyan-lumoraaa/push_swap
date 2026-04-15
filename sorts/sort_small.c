@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:39:47 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:42:47 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 16:08:10 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,41 @@ void	sort_two(t_stack **a, t_op_count *counts)
 		sa(*a, counts);
 }
 
+static int	get_min_pos(int top, int mid, int bot)
+{
+	if (top < mid && top < bot)
+		return (0);
+	if (mid < top && mid < bot)
+		return (1);
+	return (2);
+}
+
 void	sort_three(t_stack **a, t_op_count *counts)
 {
 	int	top;
 	int	mid;
 	int	bot;
+	int	min_pos;
 
 	top = (*a)->n;
 	mid = (*a)->next->n;
 	bot = (*a)->next->next->n;
 	if (top < mid && mid < bot)
 		return ;
-	else if (top < mid && top < bot && mid > bot)
-	{
-		sa(*a, counts);
+	min_pos = get_min_pos(top, mid, bot);
+	if (min_pos == 1)
 		ra(a, counts);
-	}
-	else if (top > mid && mid < bot && top < bot)
-	{
-		sa(*a, counts);
-	}
-	else if (top > mid && mid > bot)
-	{
-		sa(*a, counts);
+	else if (min_pos == 2)
 		rra(a, counts);
-	}
-	else if (top > mid && top > bot && mid < bot)
-	{
-		ra(a, counts);
-	}
-	else if (top < mid && top > bot && mid > bot)
-	{
-		rra(a, counts);
-	}
+	if ((*a)->n > (*a)->next->n)
+		sa(*a, counts);
 }
 
 void	sort_five(t_stack **a, t_stack **b, t_op_count *counts)
 {
-	int size;
-	int pos;
-	int rot;
+	int	size;
+	int	pos;
+	int	rot;
 
 	size = stack_size(*a);
 	while (size > 3)

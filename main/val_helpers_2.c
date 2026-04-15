@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:52:35 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 14:53:45 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:58:51 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,16 @@ void	free_mat(char **mat)
 
 char	*join_all_args(int argc, char **argv)
 {
-	char *result;
-	char *tmp;
-	char *spaced;
-	int i = 1;
+	char	*result;
+	char	*tmp;
+	char	*spaced;
+	int		i;
 
+	i = 1;
 	result = ft_strdup("");
 	while (i < argc)
 	{
-		spaced = ft_strjoin(result, " "); // Add space before next arg
+		spaced = ft_strjoin(result, " ");
 		free(result);
 		tmp = ft_strjoin(spaced, argv[i]);
 		free(spaced);
