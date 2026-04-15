@@ -6,46 +6,48 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 17:05:03 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 13:04:24 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 14:46:18 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double compute_disorder(t_stack *a)
+double	compute_disorder(t_stack *a)
 {
-    int mistakes;
-    int total_pairs;
-    t_stack *cur;
-    t_stack *cmp;
-    cur = a;
-    
-    total_pairs = stack_size(a)*(stack_size(a) - 1)/2;
-    mistakes = 0;
-    
-    while(cur->next){
-        cmp = cur->next;
-        while(cmp){
-            if(cmp->n < cur->n)
-                mistakes++;
-            cmp = cmp->next;
-        }
-        cur = cur->next;
-    }
-    return ((double)mistakes/total_pairs); 
+	int		mistakes;
+	int		total_pairs;
+	t_stack	*cur;
+	t_stack	*cmp;
+
+	cur = a;
+	total_pairs = stack_size(a) * (stack_size(a) - 1) / 2;
+	mistakes = 0;
+	while (cur->next)
+	{
+		cmp = cur->next;
+		while (cmp)
+		{
+			if (cmp->n < cur->n)
+				mistakes++;
+			cmp = cmp->next;
+		}
+		cur = cur->next;
+	}
+	return ((double)mistakes / total_pairs);
 }
 
-void adaptive(double disorder, t_stack **a, t_stack **b, t_op_count *counts){
-    if(disorder < 0 || disorder > 1)
-    {
-        write(2, "Error\n", 6);
-        return;
-    }
-       
-    if(disorder < 0.2)
-        insertion_sort(a, b, counts);
-    else if(disorder >= 0.2 && disorder < 0.5)
-        chunk_sort(a, b, counts);
-    else
-        radix_sort(a, b, counts);
+void	adaptive(double disorder, t_stack **a, t_stack **b, t_op_count *counts)
+{
+	if (disorder < 0 || disorder > 1)
+	{
+		write(2, "Error\n", 6);
+		return ;
+	}
+
+	if (disorder < 0.2)
+		insertion_sort(a, b, counts);
+	else if (disorder >= 0.2 && disorder < 0.5)
+		chunk_sort(a, b, counts);
+	else
+		radix_sort(a, b, counts);
 }

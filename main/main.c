@@ -6,84 +6,91 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/14 13:04:24 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:53:25 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// valod -> null(invalod), flag(adaptive, ....)
 
-void zerofy_counts(t_op_count *count){
-    count->sa = 0;
-    count->sb = 0;
-    count->pa = 0;
-    count->ra = 0;
-    count->rra = 0;
-    count->pb = 0;
-    count->rb = 0;
-    count->rrb = 0;
-    count->ss = 0;
-    count->rr = 0;
-    count->rrr = 0;
-    count->total = 0;
-    count->chunk_max = 0;
-    count->chunk_min = 0;
+void	zerofy_counts(t_op_count *count)
+{
+	count->sa = 0;
+	count->sb = 0;
+	count->pa = 0;
+	count->ra = 0;
+	count->rra = 0;
+	count->pb = 0;
+	count->rb = 0;
+	count->rrb = 0;
+	count->ss = 0;
+	count->rr = 0;
+	count->rrr = 0;
+	count->total = 0;
+	count->chunk_max = 0;
+	count->chunk_min = 0;
 }
 
-int main(int argc, char **argv){
-    char *flag;
-    int bench;
-    t_op_count counts;
-    t_stack *a;
-    t_stack *b;
-    char *str;
-    double disorder;
-    
-    bench = 0;
-    if(argc < 2)
-        return 0;
+static int	init_data(int ac, char **av, char **str, t_data *d)
+{
+	*str = join_all_args(ac, av);
+	if (!*str)
+	{
+		free(d->flag);
+		return (0);
+	}
+	if (!is_valid(*str, &d->flag, &d->bench))
+	{
+		write(2, "Error\n", 6);
+		free(d->flag);
+		free(*str);
+		return (0);
+	}
+	return (1);
+}
 
-    zerofy_counts(&counts);
-    
-    flag = ft_strdup("--adaptive");         // we have t heap allocate it first, so that in valildationn fucntion the free() works
-    str = join_all_args(argc, argv);
-    if(!str)                // Check if join failed
-    {
-        free(flag);
-        return 0;
-    }
-    if(!is_valid(str, &flag, &bench))
-    {
-        write(2, "Error\n", 6);
-        free(flag);
-        free(str);
-        return 0;
-    }
-    
-    a = parse(str);
-    b = NULL;
-    free(str);          // parse allocates memory for str
-    if(!a || is_sorted(a))
-    {
-        free(flag);
-        free_stack(&a);
-        return 0;
-    }
-    disorder = compute_disorder(a);
+static void	execute_sort(t_stack **a, t_stack **b, t_op_count *c, char *f)
+{
+	double	dis;
 
-    if(!ft_strcmp_strict(flag, "--simple"))
-        insertion_sort(&a, &b, &counts);
-    else if(!ft_strcmp_strict(flag, "--medium"))
-        chunk_sort(&a, &b, &counts);
-    else if(!ft_strcmp_strict(flag, "--complex"))
-        radix_sort(&a, &b, &counts);
-    else
-        adaptive(disorder, &a, &b, &counts);
+	dis = compute_disorder(*a);
+	if (!ft_strcmp_strict(f, "--simple"))
+		insertion_sort(a, b, c);
+	else if (!ft_strcmp_strict(f, "--medium"))
+		chunk_sort(a, b, c);
+	else if (!ft_strcmp_strict(f, "--complex"))
+		radix_sort(a, b, c);
+	else
+		adaptive(dis, a, b, c);
+}
 
-    if(bench)
-        print_bench(&counts, disorder, flag);
-    free(flag);
-    free_stack(&a);
-    free_stack(&b);
-    return (0);
+int	main(int argc, char **argv)
+{
+	t_data d;
+	t_stack *a;
+	t_stack *b;
+	char *str;
+
+	if (argc < 2)
+		return (0);
+	zerofy_counts(&d.counts);
+	d.flag = ft_strdup("--adaptive");
+	d.bench = 0;
+	if (!init_data(argc, argv, &str, &d))
+		return (0);
+	a = parse(str);
+	free(str);
+	b = NULL;
+	if (!a || is_sorted(a))
+	{
+		free(d.flag);
+		return (free_stack(&a), 0);
+	}
+	execute_sort(&a, &b, &d.counts, d.flag);
+	if (d.bench)
+		print_bench(&d.counts, compute_disorder(a), d.flag);
+
+	free(d.flag);
+	free_stack(&a);
+	free_stack(&b);
+	return (0);
 }
