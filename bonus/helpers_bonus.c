@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_impl.c                                       :+:      :+:    :+:   */
+/*   helpers_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/14 14:45:06 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 17:12:58 by nhovhiky         ###   ########.fr       */
+/*   Created: 2026/04/15 17:10:27 by nhovhiky          #+#    #+#             */
+/*   Updated: 2026/04/15 17:12:55 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-void	sa(t_stack *a)
+void	ra(t_stack **a)
 {
-	swap(a);
+	rotate(a);
 }
 
-void	sb(t_stack *b)
+void	rb(t_stack **b)
 {
-	swap(b);
+	rotate(b);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	rr(t_stack **a, t_stack **b)
 {
-	swap(a);
-	swap(b);
+	rotate(a);
+	rotate(b);
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	rra(t_stack **a)
 {
-	push(b, a);
+	reverse_rotate(a);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	rrb(t_stack **b)
 {
-	push(a, b);
+	reverse_rotate(b);
 }

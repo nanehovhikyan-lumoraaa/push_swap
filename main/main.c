@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 18:04:02 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 15:57:49 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/15 17:39:00 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	char	*str;
+	double	dis;
 
 	if (argc < 2)
 		return (0);
@@ -81,12 +82,10 @@ int	main(int argc, char **argv)
 	free(str);
 	b = NULL;
 	if (!a || is_sorted(a))
-	{
-		free(d.flag);
-		return (free_stack(&a), 0);
-	}
+		return (free(d.flag), free_stack(&a), 0);
+	dis = compute_disorder(a);
 	execute_sort(&a, &b, &d.counts, d.flag);
 	if (d.bench)
-		print_bench(&d.counts, compute_disorder(a), d.flag);
+		print_bench(&d.counts, dis, d.flag);
 	return (free(d.flag), free_stack(&a), free_stack(&b), 0);
 }

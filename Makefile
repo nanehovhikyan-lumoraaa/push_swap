@@ -31,9 +31,14 @@ SRCS          := main/main.c \
 
 # Bonus source files
 BONUS_SRCS    := bonus/bonus.c \
+                 bonus/bonus_impl_helper.c \
                  bonus/bonus_impl.c \
-                 bonus/utils_bonus.c \
+                 bonus/helpers_bonus_2.c \
+                 bonus/helpers_bonus.c \
+                 bonus/helpers_utils.c \
                  bonus/helpers.c \
+                 bonus/split_bonus.c \
+                 bonus/utils_bonus.c \
                  bonus/get_next_line/get_next_line.c \
                  bonus/get_next_line/get_next_line_utils.c
 

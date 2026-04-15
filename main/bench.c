@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhovhiky <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 15:59:51 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 16:00:12 by nhovhiky         ###   ########.fr       */
+/*   Created: 2026/04/15 17:36:25 by nhovhiky          #+#    #+#             */
+/*   Updated: 2026/04/15 17:52:09 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	write_double_dis(double disorder, int fd)
 
 	if ((int)disorder == 1)
 	{
-		write(fd, "100.00%\n", 8);
+		write(fd, "100.00%", 7);
 		return ;
 	}
 	percent = disorder * 100;
@@ -42,7 +42,7 @@ void	write_double_dis(double disorder, int fd)
 	write(fd, ".", 1);
 	ft_putnbr_fd((int)(percent * 10) % 10, fd);
 	ft_putnbr_fd((int)(percent * 100) % 10, fd);
-	write(fd, "%\n", 1);
+	write(fd, "%", 1);
 }
 
 static void	helper_bench(t_op_count *counts, double disorder, char *flag)
