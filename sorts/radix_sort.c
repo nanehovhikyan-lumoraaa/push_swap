@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 12:51:12 by marvin            #+#    #+#             */
-/*   Updated: 2026/04/15 14:48:03 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/16 17:49:58 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	radix_sort(t_stack **a, t_stack **b, t_op_count *counts)
 	bits_size = get_bits_size(size);
 	bit = 0;
 	get_ranks(*a);
+	if (size <= 5)
+	{
+		call_small(a, b, counts);
+		return ;
+	}
 	while (bit < bits_size)
 	{
 		radix_sort_helper(a, b, bit, counts);

@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 14:39:47 by nhovhiky          #+#    #+#             */
-/*   Updated: 2026/04/15 16:08:10 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/16 17:57:16 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,38 @@ void	sort_two(t_stack **a, t_op_count *counts)
 		sa(*a, counts);
 }
 
-static int	get_min_pos(int top, int mid, int bot)
+static void	get_vals(t_stack *a, int *top, int *mid, int *bot)
 {
-	if (top < mid && top < bot)
-		return (0);
-	if (mid < top && mid < bot)
-		return (1);
-	return (2);
+	*top = a->n;
+	*mid = a->next->n;
+	*bot = a->next->next->n;
 }
 
 void	sort_three(t_stack **a, t_op_count *counts)
 {
-	int	top;
-	int	mid;
-	int	bot;
-	int	min_pos;
+	int	t;
+	int	m;
+	int	b;
 
-	top = (*a)->n;
-	mid = (*a)->next->n;
-	bot = (*a)->next->next->n;
-	if (top < mid && mid < bot)
+	get_vals(*a, &t, &m, &b);
+	if (t < m && m < b)
 		return ;
-	min_pos = get_min_pos(top, mid, bot);
-	if (min_pos == 1)
-		ra(a, counts);
-	else if (min_pos == 2)
-		rra(a, counts);
-	if ((*a)->n > (*a)->next->n)
+	if (t < m && t < b && m > b)
+	{
 		sa(*a, counts);
+		ra(a, counts);
+	}
+	else if (t > m && m < b && t < b)
+		sa(*a, counts);
+	else if (t > m && m > b)
+	{
+		sa(*a, counts);
+		rra(a, counts);
+	}
+	else if (t > m && t > b && m < b)
+		ra(a, counts);
+	else if (t < m && t > b && m > b)
+		rra(a, counts);
 }
 
 void	sort_five(t_stack **a, t_stack **b, t_op_count *counts)
@@ -75,4 +79,14 @@ void	sort_five(t_stack **a, t_stack **b, t_op_count *counts)
 	sort_three(a, counts);
 	while (*b)
 		pa(a, b, counts);
+}
+
+void	call_small(t_stack **a, t_stack **b, t_op_count *counts)
+{
+	if (stack_size(*a) == 2)
+		sort_two(a, counts);
+	else if (stack_size(*a) == 3)
+		sort_three(a, counts);
+	else if (stack_size(*a) == 4 || stack_size(*a) == 5)
+		sort_five(a, b, counts);
 }

@@ -6,7 +6,7 @@
 /*   By: nhovhiky <nhovhiky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 16:07:48 by mvoskany          #+#    #+#             */
-/*   Updated: 2026/04/15 16:14:58 by nhovhiky         ###   ########.fr       */
+/*   Updated: 2026/04/16 17:44:38 by nhovhiky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int					best_rotation(int pos, int size);
 void				helper_rot(t_stack **b, int rot, t_op_count *counts);
 
 // sort_small.c
+void				call_small(t_stack **a, t_stack **b, t_op_count *counts);
 void				sort_two(t_stack **a, t_op_count *counts);
 void				sort_three(t_stack **a, t_op_count *counts);
 void				sort_five(t_stack **a, t_stack **b, t_op_count *counts);
